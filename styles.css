@@ -1,0 +1,213 @@
+:root {
+    --primary-color: #662D8C;
+    --secondary-color: #ED1E79;
+    --background-color: #0c0114;
+    --text-color: white;
+    --accent-color: #6A0DAD;
+    --good-color: #4CAF50;
+    --neutral-color: #FFBF00;
+    --bad-color: #F44336;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #93A5CF 0%, #E4EfE9 100%);;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+    overflow: hidden;
+}
+
+#chat-container {
+    background-color: #0c0114;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(241, 0, 0, 0.7);
+    padding: 15px;
+    border: 2px solid #A7BEAE;
+    position: relative;
+    overflow: hidden;
+    animation: containerFadeIn 0.8s ease-out;
+}
+
+@keyframes containerFadeIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#logo {
+    width: 30px;
+    height: 30px;
+    animation: logoBlink 1.5s infinite alternate;
+}
+
+@keyframes logoBlink {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(180deg); }
+}
+
+#title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
+}
+
+#chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #735DA5;
+}
+
+.message {
+    background-color: #31473A;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 80%;
+    margin: 5px;
+    color: white;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: messageFadeIn 0.6s forwards;
+}
+
+@keyframes messageFadeIn {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.user-message { align-self: flex-end; background-color: #0c0114; }
+.bot-message { align-self: flex-start; }
+
+#feedback-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    align-items: center;
+}
+
+.feedback-button {
+    padding: 12px 20px;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    width: 85%;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-out, background-color 0.3s ease-out, box-shadow 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.feedback-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    transform: scale(0);
+    transition: transform 0.3s ease-out;
+}
+
+.feedback-button:hover::before { transform: scale(1); }
+
+.good-button { background-color: #4CAF50;}
+.neutral-button { background-color: #FFBF00;}
+.bad-button { background-color: #F44336;}
+.purple-button { background-color: #73605B;}
+
+.selected { background-color: #2A3132; }
+
+.feedback-button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+#other-feedback-container {
+    margin-top: 10px;
+}
+
+#other-feedback-textbox {
+    width: 90%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+#back-button {
+    padding: 10px 15px;
+    background-color:  #C5001A;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 50%;
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#back-button:hover {
+    background-color: #002C54;
+}
+
+#thank-you-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--good-color);
+    color: var(--text-color);
+    padding: 25px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    display: none;
+    z-index: 1002;
+    animation: modalFadeIn 0.5s forwards;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+#lock-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1001;
+    display: none;
+}
+

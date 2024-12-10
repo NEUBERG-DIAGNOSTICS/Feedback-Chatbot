@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Chatbot - Neuberg Diagnostics</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="chat-container">
+        <header>
+            <img id="logo" src="logo.png" alt="Neuberg Diagnostics Logo">
+            <h1 id="title">Neuberg Diagnostics</h1>
+        </header>
+
+        <div id="chat-box"></div>
+        
+        <div id="feedback-container"></div>
+
+        <div id="other-feedback-container" style="display: none;">
+            <textarea id="other-feedback-textbox" placeholder="What is One Thing we could do to make you Happy" rows="4"></textarea>
+            <button id="back-button" onclick="submitOtherFeedback()" >Add suggestions</button>
+        </div>
+    </div>
+
+    <div id="thank-you-modal">
+        <h2>Thank you for your feedback!</h2>
+        <p>We truly appreciate it and will work hard to improve our services.</p>
+    </div>
+
+    <div id="lock-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
